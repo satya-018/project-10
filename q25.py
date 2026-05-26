@@ -1,9 +1,9 @@
 import streamlit as st
 from datetime import date
 
-st.set_page_config(page_title="Anamika Birthday Countdown")
+st.set_page_config(page_title="Countdown")
 
-st.title("🎂 Birthday Countdown for Anamika Kindo")
+st.title("countdown")
 
 # Input fields
 title = st.text_input("Enter your title (Miss, Ms., Dr., etc.)")
