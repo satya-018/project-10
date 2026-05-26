@@ -1,23 +1,28 @@
 import streamlit as st
+import time
 
-st.title("Username Modifier")
+st.set_page_config(page_title="Secret Scan")
 
-username = st.text_input("Enter username here:")
+st.title("🔍 Identity Scanner")
 
-if username:
-    uppercase_username = username.upper()
-    replace_username = uppercase_username.replace("A", "@")
+name = st.text_input("Enter your name")
 
-    first_character = replace_username[0]
-    last_character = replace_username[-1]
+if st.button("Scan"):
+    
+    progress = st.progress(0)
 
-    st.write("Modified username:", replace_username)
-    st.write("Length:", len(replace_username))
-    st.write("First character:", first_character)
-    st.write("Last character:", last_character)
-    st.write("Count of @:", replace_username.count("@"))
+    for i in range(100):
+        time.sleep(0.02)
+        progress.progress(i + 1)
 
-    if len(replace_username) <= 10:
-        st.success("Valid username")
+    st.balloons()
+
+    if name.strip().lower() == "anamika kindo":
+        st.success("✅ Match Found!")
+        st.write("🌸 Welcome Anamika Kindo")
+        st.write("⭐ Rarity Level: 100/100")
+        st.write("💎 Status: One of a kind")
+        st.write("🚀 Secret Mode Activated")
     else:
-        st.error("Username is too long")
+        st.warning("User detected.")
+        st.write(f"Hello {name}!")
