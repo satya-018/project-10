@@ -1,28 +1,32 @@
 import streamlit as st
-import time
+from datetime import date
 
-st.set_page_config(page_title="Secret Scan")
+st.set_page_config(page_title="Anamika Birthday Countdown")
 
-st.title("🔍 Identity Scanner")
+st.title("🎂 Birthday Countdown for Anamika Kindo")
 
-name = st.text_input("Enter your name")
+# Input fields
+title = st.text_input("Enter your title (Miss, Ms., Dr., etc.)")
+dob = st.date_input(
+    "Select your Date of Birth",
+    min_value=date(1900, 1, 1),
+    max_value=date.today()
+)
 
-if st.button("Scan"):
-    
-    progress = st.progress(0)
+if st.button("Check Countdown"):
+    today = date.today()
 
-    for i in range(100):
-        time.sleep(0.02)
-        progress.progress(i + 1)
+    # Next birthday calculation
+    next_birthday = date(today.year, dob.month, dob.day)
+
+    if next_birthday < today:
+        next_birthday = date(today.year + 1, dob.month, dob.day)
+
+    days_left = (next_birthday - today).days
+
+    st.success(
+        f"🎉 Congratulations Anamika {title}! "
+        f"Your birthday is just {days_left} days away."
+    )
 
     st.balloons()
-
-    if name.strip().lower() == "anamika kindo":
-        st.success("✅ Match Found!")
-        st.write("🌸 Welcome Anamika Kindo")
-        st.write("⭐ Rarity Level: 100/100")
-        st.write("💎 Status: One of a kind")
-        st.write("🚀 Secret Mode Activated")
-    else:
-        st.warning("User detected.")
-        st.write(f"Hello {name}!")
