@@ -25,8 +25,8 @@ if st.button("Check Countdown"):
     days_left = (next_birthday - today).days
 
     st.success(
-        f"🎉 birthday gya bhar me {title}! "
-        f" Toh tereko lagta hai mai jhut bol reha hu . Toh bs man le simple ."
+        f"🎉 congrulation {title}! "
+        f" your birthday is just {days_left} days away."
     )
 
     st.balloons()
