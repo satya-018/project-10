@@ -6,7 +6,7 @@ st.set_page_config(page_title="Countdown")
 st.title("countdown")
 
 # Input fields
-title = st.text_input("Enter your title (Miss, Ms., Dr., etc.)")
+title = st.text_input("Enter your name (Miss, Ms., Dr., etc.)")
 dob = st.date_input(
     "Select your Date of Birth",
     min_value=date(1900, 1, 1),
@@ -25,7 +25,7 @@ if st.button("Check Countdown"):
     days_left = (next_birthday - today).days
 
     st.success(
-        f"🎉 Congratulations Anamika {title}! "
+        f"🎉 Congratulations {title}! "
         f"Your birthday is just {days_left} days away."
     )
 
